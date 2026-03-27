@@ -1,0 +1,67 @@
+CREATE TABLE DEPARTAMENTO (
+    Numero NUMBER(5) PRIMARY KEY,
+    Nome VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE LOCAL_DEPARTAMENTO (
+    Numero NUMBER(5) REFERENCES DEPARTAMENTO(Numero),
+    Local VARCHAR2(20),
+    PRIMARY KEY (Numero, Local)
+);
+
+CREATE TABLE FUNCIONARIO (
+    Cpf NUMBER(20) PRIMARY KEY,
+    Nome_PNome VARCHAR2(15) NOT NULL,
+    Nome_NomeM VARCHAR2(15),
+    Nome_UNome VARCHAR2(15) NOT NULL,
+    Sexo CHAR(1),
+    Endereco VARCHAR2(50) NOT NULL,
+    DataNasc DATE NOT NULL,
+    Numero_Departamento NUMBER(5) REFERENCES DEPARTAMENTO(Numero)
+);
+
+INSERT INTO DEPARTAMENTO VALUES (10, 'Vendas');
+INSERT INTO DEPARTAMENTO VALUES (20, 'Técnico');
+
+INSERT INTO LOCAL_DEPARTAMENTO VALUES (10, 'BH');
+INSERT INTO LOCAL_DEPARTAMENTO VALUES (10, 'SP');
+INSERT INTO LOCAL_DEPARTAMENTO VALUES (20, 'BH');
+INSERT INTO LOCAL_DEPARTAMENTO VALUES (20, 'RJ');
+
+INSERT INTO FUNCIONARIO 
+VALUES (
+    10000,
+    'Antônio',
+    'Pereira',
+    'Silva',
+    'M',
+    'Rua A, 10',
+    TO_DATE ('2000-12-01', 'YYYY-MM-DD'),
+    10
+);
+
+INSERT INTO FUNCIONARIO 
+VALUES (
+    20000,
+    'Ana',
+    'Miranda',
+    'Sales',
+    'F',
+    'Rua B, 10',
+    TO_DATE ('2000-12-01', 'YYYY-MM-DD'),
+    10
+);
+
+INSERT INTO FUNCIONARIO 
+VALUES (
+    30000,
+    'Maria',
+    'Fernandes',
+    'Souza',
+    'M',
+    'Rua C, 10',
+    TO_DATE ('2000-12-01', 'YYYY-MM-DD'),
+    20
+);
+
+COMMIT;
