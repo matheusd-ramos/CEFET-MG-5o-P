@@ -13,6 +13,7 @@ CREATE TABLE AUDITORIA (
     USUARIO VARCHAR2(40)
 );   
 
+-- Criando o trigger
 CREATE OR REPLACE TRIGGER registrar_alteracao_salario
 AFTER UPDATE OF Salario ON FUNCIONARIO
 FOR EACH ROW
@@ -21,10 +22,13 @@ BEGIN
 END;
 
 -- Testando Trigger de auditoria
+UPDATE FUNCIONARIO SET Salario=20000 WHERE CPF=33344555587;
+UPDATE FUNCIONARIO SET Salario=50000 WHERE CPF=88866555576;
 UPDATE FUNCIONARIO SET Salario=0 WHERE CPF=88866555576;
 
 --------------------------------- Questão 2 -----------------------------------
 
+-- Criação do trigger
 CREATE OR REPLACE TRIGGER salario_invalido
 BEFORE UPDATE OF Salario ON FUNCIONARIO
 FOR EACH ROW
