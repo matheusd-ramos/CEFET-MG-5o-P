@@ -74,7 +74,7 @@ ALTER TABLE JOGADOR MODIFY ID_Time NOT NULL;
 
 ALTER TABLE JOGADOR ADD CONSTRAINT uk_Nome UNIQUE (Nome_Jogador);
 
--- 9) Conferindo as restrições com consultas
+-- 9) Conferindo as restrições com inserções
 
 INSERT INTO JOGADOR VALUES (12345678910, 'Jorge', 123);     -- Mesmo CPF
 INSERT INTO TIME VALUES (123, 'Santos');                    -- Mesmo ID_Time
@@ -82,3 +82,5 @@ DROP TABLE TIME;                                            -- Tentando apagar a
 INSERT INTO JOGO VALUES ('01/01/26', 0, 0, 123, 456);       -- Tentendo adicionar o mesmo jogo
 INSERT INTO JOGADOR VALUES (0, 'Marcelo');                  -- Tentando adicionar jogador sem time
 INSERT INTO JOGADOR VALUES (0, 'Garibaldo', 456);           -- Tentando acicionar jogador com mesmo nome
+
+select * from jogador;
