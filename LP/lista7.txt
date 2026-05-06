@@ -1,0 +1,74 @@
+=========================================================================================================
+
+(* Questão 1 *)
+
+a) fun i12rl L = map (op real) L;
+
+b) fun ordList L = map (op ord) L;
+ 
+c) fun squareList L = map (fn x => x * x) L;
+
+d) fun multPairs L = map (fn (a, b) => a * b) L;
+
+e) fun incList L n = map (fn x => x + n) L;
+
+f) fun sqSum L = foldr (fn (x, acc) => (x * x) + acc) 0 L;
+
+g) fun bor L = foldr (fn (x, acc) => x orelse acc) false L;
+
+h) fun dupList L = foldr (fn (x, acc) => (x::x::acc)) [] L;
+
+i) fun myLength L = foldl (fn (x, acc) => acc + 1) 0 L;
+
+j) fun is2absrl L = map (fn x => real (abs x)) L;
+
+k) fun trueCount L = foldr (fn (x, acc) => if x then acc + 1 else acc) 0 L;
+
+l) fun maxPairs L = foldr (fn ((a, b), acc) => if a > b then a::acc else b::acc) [] L;
+
+m) fun lconcat L = foldr (fn (x, acc) => x @ acc) [] L;
+
+n) fun min L = foldl (fn (x, acc) => if x < acc then x else acc) (hd L) L;
+
+o) fun member (e, L) = foldr (fn (x, acc) => if x = e then true else acc) false L;
+
+p) fun append L1 L2 = foldr (fn (x, acc) => x:: acc) ((foldr (fn (x, acc) => x::acc) [] L2)) L1;
+
+q) fun less (e,L) = foldr (fn (x, acc) => if x < e then x::acc else acc) [] L;
+
+r) fun evens L = foldr (fn (x, acc) => if (x mod 2) = 0 then x::acc else acc) [] L;
+
+s) fun converts L = foldr (fn ((a, b), (L1, L2)) => (a::L1, b::L2)) ([], []) L;
+
+=========================================================================================================
+
+(* Questão 2 *)
+
+a) datatype suit = Hearts | Diamonds | Clubs | Spades;
+
+   fun suitname x = case x of
+   Diamonds => "Diamantes" |
+   Hearts => "Corações"    |
+   Clubs => "Paus"         |
+   Spades => "Espadas";
+
+b) fun plus (MeuInt x) (MeuInt y) = MeuInt (x + y)
+   |   plus (MeuInt x) (MeuReal y) = MeuReal ((real x) + y)
+   |   plus (MeuReal x) (MeuInt y) = MeuReal (x + (real y))
+   |   plus (MeuReal x) (MeuReal y) = MeuReal (x + y);
+
+c) fun addUp (INT x) = x
+   |   addUp (LIST []) = 0
+   |   addUp (LIST (x::xs)) = addUp(x) + addUp(LIST xs);
+
+d) i. fun prod NIL = 1
+      |   prod (CONS (x, xs)) = x * prod(xs);
+
+   ii. fun append NIL L2 = L2
+         | append (CONS(x, xs)) L2 = CONS(x, append xs L2);
+
+   iii. fun reverse NIL = NIL
+        |   reverse (CONS (x, xs)) = append (reverse xs) (CONS (x, NIL));
+
+e) i. fun revTree Empty = Empty
+      |   revTree (Node (esq, dado, dir)) = Node (revTree dir, dado, revTree esq);
