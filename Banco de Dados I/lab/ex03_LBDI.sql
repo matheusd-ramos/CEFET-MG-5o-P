@@ -10,5 +10,3 @@ UPPER(d.Department_Name) as Departamento
 from EMPLOYEES e
 join DEPARTMENTS d on e.Department_ID = d.Department_ID
 where LOWER(e.Department_Name) = 'executive';
-
-
