@@ -27,7 +27,7 @@ group by C.CITY;
 select C.CITY Cidade, SUM(O.TOTAL) Total, ROUND (AVG(O.TOTAL), 2) Média
 from ALUNO.CUSTOMER C join ALUNO.ORD O on C.CUSTID=O.CUSTID
 group by C.CITY
-having C.CITY('PALO ALTO', 'SANTA CLARA');
+having C.CITY IN ('PALO ALTO', 'SANTA CLARA');
 
 -- Questão 06
 select max(Soma)
@@ -47,6 +47,6 @@ having sum(I.QTY) = (select max(Soma)
 -- Questão 08
 select G.ENAME, sum(O.TOTAL)
 from ALUNO.EMP E join ALUNO.EMP G on E.MGR=G.EMPNO join
-     ALUNO.CUSTOMER C on E.EMPNO=C.EMPID join 
+     ALUNO.CUSTOMER C on E.EMPNO=C.REPID join 
      ALUNO.ORD O on C.CUSTID=O.CUSTID
 group by G.ENAME;
