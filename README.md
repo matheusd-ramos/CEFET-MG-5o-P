@@ -4,5 +4,6 @@
 Todos os códigos presentes no repositório foram desenvolvidos durante o quinto período de Engenharia de Computação no CEFET-MG.
 
 ## Disciplinas Contempladas
-- Engenharia de Software I
 - Banco de Dados I
+- Linguagens de Programação
+- Visão Computacional
